@@ -1,0 +1,34 @@
+# Nuxt dev/build outputs (rebuilt in build stage)
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Dependencies (installed fresh in deps stage)
+node_modules
+
+# Env files — must NOT be baked into the image; injected at runtime via compose
+.env
+.env.*
+!.env.example
+
+# Version control
+.git
+.gitignore
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Editor/OS
+.DS_Store
+.fleet
+.idea
+.vscode
+
+# Logs
+logs
+*.log

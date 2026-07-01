@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-primary: #17171c;
+  --color-deep-green: #003c33;
+  --color-dark-navy: #071829;
+  --color-canvas: #ffffff;
+  --color-soft-stone: #eeece7;
+  --color-pale-green: #edfce9;
+  --color-pale-blue: #f1f5ff;
+  --color-ink: #212121;
+  --color-muted: #93939f;
+  --color-slate: #75758a;
+  --color-body-muted: #616161;
+  --color-coral: #ff7759;
+  --color-action-blue: #1863dc;
+  --color-hairline: #d9d9dd;
+  --color-border-light: #e5e7eb;
+  --color-on-dark: #ffffff;
+
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+
+  /* Border radius scale */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-pill: 32px;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-deep-green);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .pill-cta-dark {
+    @apply inline-flex items-center justify-center rounded-[32px] bg-primary text-white text-sm font-medium px-6 py-3 transition-opacity hover:opacity-90;
+  }
+
+  .pill-cta-white {
+    @apply inline-flex items-center justify-center rounded-[32px] bg-white text-primary text-sm font-medium px-6 py-3 transition-opacity hover:opacity-90;
+  }
+
+  .pill-outline {
+    @apply inline-flex items-center justify-center rounded-[30px] border border-primary text-primary text-sm font-medium px-4 py-2 transition-colors hover:bg-primary hover:text-white;
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-ink underline-offset-4 hover:underline;
+  }
+
+  .form-input {
+    @apply block w-full border border-hairline rounded-[4px] px-4 py-3 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-action-blue transition-colors bg-white;
+  }
+
+  .mono-label {
+    @apply font-mono text-xs uppercase tracking-[0.12em] text-muted;
+  }
+
+  .display-heading {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  /* Static brand gradient: first paint + reduced-motion + no-WebGL fallback,
+     sits under the animated Whatamesh canvas when it's active. */
+  .gradient-fallback {
+    background-color: var(--color-deep-green);
+    background-image: linear-gradient(
+      130deg,
+      var(--color-deep-green) 0%,
+      var(--color-dark-navy) 38%,
+      var(--color-primary) 70%,
+      var(--color-coral) 130%
+    );
+  }
+}
