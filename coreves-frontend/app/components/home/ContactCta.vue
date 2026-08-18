@@ -6,6 +6,7 @@ const form = reactive({
   company: '',
   email: '',
   phone: '',
+  inquiryType: '',
   message: '',
 })
 
@@ -15,12 +16,18 @@ const errorMessage = ref('')
 const { trackEvent } = useAnalytics()
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const inquiryOptions = [
+  'Building software',
+  'Coreves Finance product',
+  'An existing product',
+]
 
 function validate(): string | null {
   if (!form.name.trim()) return 'Please enter your full name.'
   if (!form.company.trim()) return 'Please enter your organisation.'
   if (!form.email.trim() || !EMAIL_RE.test(form.email.trim())) return 'Please enter a valid work email.'
   if (!form.phone.trim()) return 'Please enter a phone number.'
+  if (!form.inquiryType.trim()) return 'Please select what you want to inquire about.'
   if (!form.message.trim()) return 'Please tell us how we can help.'
   return null
 }
@@ -41,9 +48,12 @@ async function handleSubmit() {
       method: 'POST',
       body: { ...form },
     })
-    trackEvent('demo_request_submit', { form_location: 'contact_section' })
+    trackEvent('demo_request_submit', {
+      form_location: 'contact_section',
+      inquiry_type: form.inquiryType,
+    })
     status.value = 'success'
-    Object.assign(form, { name: '', company: '', email: '', phone: '', message: '' })
+    Object.assign(form, { name: '', company: '', email: '', phone: '', inquiryType: '', message: '' })
   } catch (err: any) {
     status.value = 'error'
     errorMessage.value = err?.data?.statusMessage || 'Something went wrong. Please try again.'
@@ -92,6 +102,16 @@ async function handleSubmit() {
             <div class="sm:col-span-1">
               <label for="phone" class="mb-1.5 block text-sm text-ink">Phone</label>
               <input id="phone" v-model="form.phone" type="tel" placeholder="+260 …" class="form-input" />
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="inquiry-type" class="mb-1.5 block text-sm text-ink">What would you like to inquire about?</label>
+              <select id="inquiry-type" v-model="form.inquiryType" class="form-input">
+                <option value="" disabled>Select an inquiry type</option>
+                <option v-for="option in inquiryOptions" :key="option" :value="option">
+                  {{ option }}
+                </option>
+              </select>
             </div>
 
             <div class="sm:col-span-2">

@@ -11,7 +11,7 @@ const { trackEvent } = useAnalytics()
 <template>
   <section class="relative overflow-hidden">
     <div class="section-container pt-20 pb-16 text-center sm:pt-28">
-      <p class="mono-label">Coreves Software Solutions</p>
+      <!-- <p class="mono-label">Coreves Software Solutions</p> -->
 
       <h1
         class="display-heading mx-auto mt-6 max-w-4xl text-[clamp(2.5rem,6vw,5.5rem)] text-ink"
