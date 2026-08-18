@@ -1,80 +1,130 @@
 <script setup lang="ts">
-const products = [
+const solutions = [
   {
-    name: 'Coreves Finance',
-    tag: 'Flagship',
-    status: 'Live',
-    live: true,
-    body: 'Our loan management system — origination, servicing, repayments, and compliance in one reliable workflow.',
+    name: 'Custom Software Solutions',
+    tag: 'Build',
+    status: 'Tailored',
+    primary: false,
+    body: 'Web, mobile and backend systems designed around the specific processes, users and requirements of your organisation.',
+    href: '#contact',
+  },
+  {
+    name: 'Business Process Digitalisation',
+    tag: 'Improve',
+    status: 'Operational',
+    primary: false,
+    body: 'Manual and disconnected workflows turned into structured digital processes for better visibility, consistency and control.',
+    href: '#contact',
+  },
+  {
+    name: 'Coreves Products',
+    tag: 'Products',
+    status: 'Focused',
+    primary: false,
+    body: 'Specialised software products for industries where recurring operational challenges can be solved through focused systems.',
     href: '#finance',
   },
   {
-    name: 'Credit Scoring',
-    tag: 'Module',
-    status: 'In development',
-    live: false,
-    body: 'Decisioning tools that help lenders assess risk and approve the right borrowers, faster.',
-    href: '#contact',
-  },
-  {
-    name: 'Reporting & Compliance',
-    tag: 'Module',
-    status: 'In development',
-    live: false,
-    body: 'Bank of Zambia–ready reporting that keeps records auditable without manual reconciliation.',
-    href: '#contact',
-  },
-  {
-    name: 'Integrations',
-    tag: 'Platform',
-    status: 'Ongoing',
-    live: false,
-    body: 'Mobile money connectivity with MTN and Airtel Zambia, plus the rails lenders depend on.',
-    href: '#contact',
+    name: 'Coreves Finance',
+    tag: 'Flagship',
+    status: 'Product',
+    primary: true,
+    body: 'Purpose-built loan management for customer, loan, repayment and portfolio operations in one structured environment.',
+    href: '#finance',
   },
 ]
+
+const industries = [
+  {
+    name: 'Financial Services & Microfinance',
+    body: 'Loan processing, customer records, repayments, portfolio monitoring, reporting, compliance support and credit assessment.',
+  },
+  {
+    name: 'Real Estate & Property Management',
+    body: 'Properties, tenants, leases, payments, documents, maintenance workflows and portfolio administration.',
+  },
+  {
+    name: 'Commerce & Business Operations',
+    body: 'E-commerce, sales, orders, inventory, dashboards, reporting and internal administrative workflows.',
+  },
+]
+
+const { trackEvent } = useAnalytics()
 </script>
 
 <template>
-  <section id="products" class="py-24">
+  <section id="solutions" class="py-24">
     <div class="section-container">
       <div class="max-w-2xl">
-        <p class="mono-label">Our products</p>
+        <p class="mono-label">Solutions</p>
         <h2 class="display-heading mt-5 text-4xl text-ink sm:text-5xl">
-          A growing suite for lenders.
+          Solutions shaped by the problem to solve.
         </h2>
         <p class="mt-5 text-lg leading-relaxed text-body-muted">
-          We build focused products for the full credit lifecycle. Coreves Finance leads the way
-          today, with new solutions rolling out as our clients' needs grow.
+          We focus on business outcomes first, then choose the right technology and delivery model
+          for the organisation.
         </p>
       </div>
 
       <div class="mt-14 grid gap-px overflow-hidden rounded-[16px] border border-hairline/70 bg-hairline/70 sm:grid-cols-2">
         <article
-          v-for="product in products"
-          :key="product.name"
+          v-for="solution in solutions"
+          :key="solution.name"
           class="group flex flex-col bg-canvas p-8 transition-colors hover:bg-soft-stone/40"
         >
           <div class="flex items-center justify-between gap-4">
-            <span class="font-mono text-xs uppercase tracking-[0.12em] text-muted">{{ product.tag }}</span>
+            <span class="font-mono text-xs uppercase tracking-[0.12em] text-muted">{{ solution.tag }}</span>
             <span
               class="rounded-full px-2.5 py-1 text-[11px] font-medium"
-              :class="product.live
+              :class="solution.primary
                 ? 'bg-deep-green/10 text-deep-green'
                 : 'border border-hairline text-slate'"
             >
-              {{ product.status }}
+              {{ solution.status }}
             </span>
           </div>
 
-          <h3 class="mt-5 text-2xl text-ink">{{ product.name }}</h3>
-          <p class="mt-3 flex-1 text-sm leading-relaxed text-body-muted">{{ product.body }}</p>
+          <h3 class="mt-5 text-2xl text-ink">{{ solution.name }}</h3>
+          <p class="mt-3 flex-1 text-sm leading-relaxed text-body-muted">{{ solution.body }}</p>
 
-          <a :href="product.href" class="text-link mt-6">
-            {{ product.live ? 'Explore Coreves Finance' : 'Talk to us' }}
+          <a
+            :href="solution.href"
+            class="text-link mt-6"
+            @click="
+              trackEvent('contact_cta_click', {
+                cta_location: 'product_suite',
+                product: solution.name,
+              })
+            "
+          >
+            {{ solution.primary ? 'Explore Coreves Finance' : 'Start a project' }}
             <span aria-hidden="true">→</span>
           </a>
         </article>
+      </div>
+
+      <div id="industries" class="mt-20 grid gap-10 lg:grid-cols-3 lg:items-start">
+        <div>
+          <p class="mono-label">Industries</p>
+          <h2 class="display-heading mt-5 text-4xl text-ink sm:text-5xl">
+            Industry context matters.
+          </h2>
+          <p class="mt-5 leading-relaxed text-body-muted">
+            Our strongest work is where software needs to reflect real operational detail, not just
+            generic features.
+          </p>
+        </div>
+
+        <div class="grid gap-px overflow-hidden rounded-[16px] border border-hairline/70 bg-hairline/70 lg:col-span-2">
+          <article
+            v-for="industry in industries"
+            :key="industry.name"
+            class="bg-canvas p-7 transition-colors hover:bg-soft-stone/40"
+          >
+            <h3 class="text-xl text-ink">{{ industry.name }}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-body-muted">{{ industry.body }}</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>

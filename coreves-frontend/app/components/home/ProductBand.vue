@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const points = [
-  'Local market knowledge paired with professional-grade software delivery',
-  'Security is non-negotiable — built in, not bolted on after the fact',
-  'Compliance is a feature: we make Bank of Zambia requirements easier to meet',
-  'Documentation, onboarding, and support ship with every product',
+  'Understand the business, workflows, users, constraints and objectives first',
+  'Translate requirements into clear system structure and user experience',
+  'Build around agreed priorities, workflows and operational requirements',
+  'Refine and extend systems as the organisation and its needs evolve',
 ]
 </script>
 
@@ -15,17 +15,17 @@ const points = [
           <div>
             <p class="font-mono text-xs uppercase tracking-[0.12em] text-white/50">Why Coreves</p>
             <h2 class="display-heading mt-5 text-4xl text-white sm:text-5xl">
-              Built for African lending realities — not adapted from elsewhere.
+              Business-first thinking, from discovery to improvement.
             </h2>
             <p class="mt-6 max-w-lg leading-relaxed text-white/65">
-              Local market knowledge paired with professional-grade software delivery. We understand
-              the lending context, not just the code.
+              Technology decisions begin with the operational problem. We learn how the organisation
+              works before deciding how the system should be built.
             </p>
             <a
               href="#contact"
               class="mt-9 inline-flex items-center justify-center rounded-[32px] bg-white px-6 py-3 text-sm font-medium text-deep-green transition-opacity hover:opacity-90"
             >
-              Talk to our team
+              Start a project
             </a>
           </div>
 

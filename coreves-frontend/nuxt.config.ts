@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
 
+const googleSiteVerification = process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? ''
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -9,6 +11,10 @@ export default defineNuxtConfig({
     resendApiKey: process.env.RESEND_API_KEY ?? '',
     demoNotificationEmail: process.env.DEMO_NOTIFICATION_EMAIL ?? '',
     demoFromEmail: process.env.DEMO_FROM_EMAIL ?? '',
+    public: {
+      gaMeasurementId: process.env.NUXT_PUBLIC_GA_MEASUREMENT_ID ?? '',
+      googleSiteVerification,
+    },
   },
 
   css: ['~/assets/css/main.css'],
@@ -19,7 +25,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Coreves Software Solutions — Loan management software for African lenders',
+      title: 'Coreves Software Solutions - Practical software for better operations',
       htmlAttrs: { lang: 'en' },
       meta: [
         { charset: 'utf-8' },
@@ -27,8 +33,11 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Coreves builds reliable, purpose-built loan management software for microfinance and lending institutions across Africa.',
+            'Coreves designs practical business software, digital operations and industry-focused products around real organisational workflows.',
         },
+        ...(googleSiteVerification
+          ? [{ name: 'google-site-verification', content: googleSiteVerification }]
+          : []),
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

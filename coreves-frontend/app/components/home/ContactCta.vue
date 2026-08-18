@@ -12,12 +12,13 @@ const form = reactive({
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 const status = ref<Status>('idle')
 const errorMessage = ref('')
+const { trackEvent } = useAnalytics()
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function validate(): string | null {
   if (!form.name.trim()) return 'Please enter your full name.'
-  if (!form.company.trim()) return 'Please enter your institution.'
+  if (!form.company.trim()) return 'Please enter your organisation.'
   if (!form.email.trim() || !EMAIL_RE.test(form.email.trim())) return 'Please enter a valid work email.'
   if (!form.phone.trim()) return 'Please enter a phone number.'
   if (!form.message.trim()) return 'Please tell us how we can help.'
@@ -40,6 +41,7 @@ async function handleSubmit() {
       method: 'POST',
       body: { ...form },
     })
+    trackEvent('demo_request_submit', { form_location: 'contact_section' })
     status.value = 'success'
     Object.assign(form, { name: '', company: '', email: '', phone: '', message: '' })
   } catch (err: any) {
@@ -56,16 +58,17 @@ async function handleSubmit() {
         <div class="lg:pt-6">
           <p class="mono-label">Get started</p>
           <h2 class="display-heading mt-5 text-4xl text-ink sm:text-5xl">
-            See Coreves Finance in action.
+            Have a business process that needs a better system?
           </h2>
           <p class="mt-5 max-w-md text-lg leading-relaxed text-body-muted">
-            Tell us about your lending operation and we'll set up a walkthrough tailored to your
-            products and workflows.
+            Whether you are replacing manual processes, improving an existing platform or developing
+            a new digital product, Coreves can help turn the operational requirement into a practical
+            software solution.
           </p>
           <ul class="mt-8 space-y-3 text-sm text-body-muted">
-            <li>· Built around Bank of Zambia compliance</li>
-            <li>· Onboarding and documentation included</li>
-            <li>· Local support, professional delivery</li>
+            <li>· Custom software solutions</li>
+            <li>· Business process digitalisation</li>
+            <li>· Coreves Finance enquiries</li>
           </ul>
         </div>
 
@@ -77,8 +80,8 @@ async function handleSubmit() {
             </div>
 
             <div class="sm:col-span-1">
-              <label for="company" class="mb-1.5 block text-sm text-ink">Institution</label>
-              <input id="company" v-model="form.company" type="text" placeholder="Your institution" class="form-input" />
+              <label for="company" class="mb-1.5 block text-sm text-ink">Organisation</label>
+              <input id="company" v-model="form.company" type="text" placeholder="Your organisation" class="form-input" />
             </div>
 
             <div class="sm:col-span-1">
@@ -97,7 +100,7 @@ async function handleSubmit() {
                 id="message"
                 v-model="form.message"
                 rows="4"
-                placeholder="Tell us about your loan products and team size…"
+                placeholder="Tell us about the process, product or system you want to improve…"
                 class="form-input resize-none"
               />
             </div>
@@ -108,7 +111,7 @@ async function handleSubmit() {
                 :disabled="status === 'submitting'"
                 class="pill-cta-dark w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
               >
-                {{ status === 'submitting' ? 'Sending…' : 'Request a demo' }}
+                {{ status === 'submitting' ? 'Sending…' : 'Start a project' }}
               </button>
               <p v-if="status === 'success'" class="mt-4 text-sm text-emerald-700">
                 Thanks! We've received your request and will be in touch shortly.
@@ -117,7 +120,7 @@ async function handleSubmit() {
                 {{ errorMessage }}
               </p>
               <p v-else class="mt-4 text-xs text-muted">
-                By submitting, you agree to be contacted about Coreves products. We never share your data.
+                By submitting, you agree to be contacted about Coreves solutions. We never share your data.
               </p>
             </div>
           </form>

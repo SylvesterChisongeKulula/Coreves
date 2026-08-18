@@ -5,20 +5,20 @@ const year = new Date().getFullYear()
 
 const columns = [
   {
-    title: 'Product',
-    links: ['Coreves Finance', 'Credit scoring', 'Mobile money', 'Regulatory reporting'],
+    title: 'Solutions',
+    links: ['Custom software', 'Digital operations', 'Coreves products', 'Coreves Finance'],
   },
   {
-    title: 'Solutions',
-    links: ['Microfinance institutions', 'SACCOs & credit unions', 'Private lenders', 'Digital lenders'],
+    title: 'Industries',
+    links: ['Financial services', 'Real estate', 'Commerce', 'Business operations'],
   },
   {
     title: 'Company',
-    links: ['About', 'Careers', 'Contact', 'Security'],
+    links: ['About', 'Approach', 'Contact', 'Support'],
   },
   {
     title: 'Resources',
-    links: ['Documentation', 'API reference', 'Onboarding guides', 'Compliance'],
+    links: ['Project enquiries', 'Product enquiries', 'Client support', 'Company profile'],
   },
 ]
 </script>
@@ -29,9 +29,9 @@ const columns = [
     <div class="section-container border-b border-white/10 py-16">
       <div class="grid gap-10 lg:grid-cols-2 lg:items-end">
         <div>
-          <p class="font-mono text-xs uppercase tracking-[0.12em] text-coral">Credit moves fast</p>
+          <p class="font-mono text-xs uppercase tracking-[0.12em] text-coral">Operations evolve</p>
           <h2 class="display-heading mt-4 max-w-md text-3xl text-white sm:text-4xl">
-            Stay close to what we ship next.
+            Stay close to practical software for better business systems.
           </h2>
         </div>
         <div class="w-full lg:ml-auto lg:max-w-md">
@@ -63,7 +63,8 @@ const columns = [
           <span class="text-base font-medium text-white">Coreves</span>
         </div>
         <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
-          Software solutions for microfinance and lending institutions across Africa.
+          Practical software solutions, digital operations and industry-focused products designed
+          around real business needs.
         </p>
         <p class="mt-6 text-sm text-white/55">Lusaka, Zambia</p>
       </div>

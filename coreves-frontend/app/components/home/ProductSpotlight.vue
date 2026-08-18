@@ -7,21 +7,23 @@ const consoleRows = [
 
 const capabilities = [
   {
-    title: 'Loan origination & tracking',
-    body: 'Capture applications, automate approvals, and track every loan from disbursement through repayment with a full audit trail.',
+    title: 'Manage',
+    body: 'Customer records, loan details, repayments and day-to-day lending operations kept in one structured environment.',
     icon: 'doc',
   },
   {
-    title: 'Repayments & collections',
-    body: 'Schedule installments, reconcile payments, and flag arrears early with portfolio-at-risk monitoring built in.',
+    title: 'Monitor',
+    body: 'Portfolio performance, operational activity and reporting made visible for teams that need clearer control.',
     icon: 'cycle',
   },
   {
-    title: 'Compliance & reporting',
-    body: 'Generate Bank of Zambia–ready reports and keep your records auditable without spreadsheets or manual reconciliation.',
+    title: 'Assess & control',
+    body: 'Credit assessment, scoring, compliance support and administrative oversight that strengthen lending decisions.',
     icon: 'shield',
   },
 ]
+
+const { trackEvent } = useAnalytics()
 </script>
 
 <template>
@@ -33,10 +35,17 @@ const capabilities = [
           <p class="mono-label">Flagship product</p>
           <h2 class="display-heading mt-5 text-4xl text-ink sm:text-5xl">Coreves Finance</h2>
           <p class="mt-5 text-lg leading-relaxed text-body-muted">
-            Our loan management system brings origination, servicing, and compliance into a single,
-            reliable workflow your team can depend on every day — across the full credit lifecycle.
+            Our flagship loan management platform brings customer, loan, repayment and portfolio
+            information into one operational environment, helping lending teams move away from
+            fragmented records toward structured, visible operations.
           </p>
-          <a href="#contact" class="pill-cta-dark mt-8">Request a demo</a>
+          <a
+            href="#contact"
+            class="pill-cta-dark mt-8"
+            @click="trackEvent('demo_cta_click', { cta_location: 'product_spotlight' })"
+          >
+            Request a Finance demo
+          </a>
         </div>
 
         <!-- Console mock -->

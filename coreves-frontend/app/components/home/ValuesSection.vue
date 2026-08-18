@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const values = [
-  { title: 'Reliability', body: 'The systems our clients depend on must work — every time. Stability is not optional in financial software.' },
-  { title: 'Transparency', body: 'In pricing, in delivery timelines, in what our software does. No surprises for clients.' },
-  { title: 'Purposeful innovation', body: 'We build what solves real problems for our market — not features for their own sake.' },
-  { title: 'Quality execution', body: 'Every deliverable — code, document, or client call — reflects the standard we set for ourselves.' },
+  { title: 'Built around your operations', body: 'The system should adapt to the business. We design around actual workflows, users, responsibilities and reporting needs.' },
+  { title: 'Built for growth', body: "Software should solve today's problems without becoming tomorrow's limitation. Scalability, maintainability and future integration are considered from the start." },
+  { title: 'Partnership beyond delivery', body: 'Software continues to evolve after launch. We build long-term working relationships so systems improve as organisations change.' },
+  { title: 'Practical outcomes', body: 'Technology is a means. Better control, visibility, consistency and operational efficiency are the outcome.' },
 ]
 </script>
 
@@ -14,11 +14,11 @@ const values = [
         <div class="lg:col-span-1">
           <p class="mono-label">What we stand for</p>
           <h2 class="display-heading mt-5 text-4xl text-ink sm:text-5xl">
-            A product company for the lending sector.
+            Understand the operation first.
           </h2>
           <p class="mt-5 leading-relaxed text-body-muted">
-            We build opinionated, focused tools for financial services — trustworthy, technically
-            rigorous, and close to our clients.
+            Every successful system begins with understanding the problem. The business requirement
+            stays visible from discovery through deployment and continued improvement.
           </p>
         </div>
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const open = ref(true)
+const { trackEvent } = useAnalytics()
 </script>
 
 <template>
@@ -8,8 +9,14 @@ const open = ref(true)
     class="relative flex h-9 items-center justify-center gap-3 bg-black px-6 text-center text-xs text-white"
   >
     <p class="truncate">
-      Coreves Finance — purpose-built credit management for African lenders.
-      <a href="#contact" class="ml-1 underline underline-offset-2 hover:opacity-80">Request a demo</a>
+      Coreves Software Solutions - practical software for better operations.
+      <a
+        href="#contact"
+        class="ml-1 underline underline-offset-2 hover:opacity-80"
+        @click="trackEvent('demo_cta_click', { cta_location: 'announcement_bar' })"
+      >
+        Start a project
+      </a>
     </p>
     <button
       type="button"
