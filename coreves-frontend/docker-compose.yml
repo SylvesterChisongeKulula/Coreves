@@ -1,7 +1,7 @@
 services:
   web:
     build:
-      context: .
+      context: ./coreves-frontend
       dockerfile: Dockerfile
     image: coreves-frontend:latest
     restart: unless-stopped
