@@ -6,19 +6,33 @@ const year = new Date().getFullYear()
 const columns = [
   {
     title: 'Solutions',
-    links: ['Custom software', 'Digital operations', 'Coreves products', 'Coreves Finance'],
+    links: [
+      { label: 'Custom software', href: '/#solutions' },
+      { label: 'Digital operations', href: '/#solutions' },
+      { label: 'Coreves products', href: '/#solutions' },
+      { label: 'Coreves Finance', href: '/#finance' },
+    ],
   },
   {
     title: 'Industries',
-    links: ['Financial services', 'Real estate', 'Commerce', 'Business operations'],
+    links: [
+      { label: 'Financial services', href: '/#industries' },
+      { label: 'Real estate', href: '/#industries' },
+      { label: 'Commerce', href: '/#industries' },
+      { label: 'Business operations', href: '/#industries' },
+    ],
   },
   {
     title: 'Company',
-    links: ['About', 'Approach', 'Contact', 'Support'],
+    links: [{ label: 'Contact', href: '/#contact' }],
   },
   {
-    title: 'Resources',
-    links: ['Project enquiries', 'Product enquiries', 'Client support', 'Company profile'],
+    title: 'Legal',
+    links: [
+      { label: 'Privacy', href: '/privacy' },
+      { label: 'Terms', href: '/terms' },
+      { label: 'Security', href: '/security' },
+    ],
   },
 ]
 </script>
@@ -59,7 +73,7 @@ const columns = [
     <div class="section-container grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-6">
       <div class="lg:col-span-2">
         <div class="flex items-center gap-3">
-          <img :src="emblemUrl" alt="" class="h-8 w-8 invert" />
+          <img :src="emblemUrl" alt="Coreves" class="h-8 w-8 invert" />
           <span class="text-base font-medium text-white">Coreves</span>
         </div>
         <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
@@ -72,8 +86,8 @@ const columns = [
       <div v-for="col in columns" :key="col.title">
         <h3 class="text-sm font-medium text-white">{{ col.title }}</h3>
         <ul class="mt-4 space-y-3">
-          <li v-for="link in col.links" :key="link">
-            <a href="#" class="text-sm text-white/55 transition-colors hover:text-white">{{ link }}</a>
+          <li v-for="link in col.links" :key="link.label">
+            <a :href="link.href" class="text-sm text-white/55 transition-colors hover:text-white">{{ link.label }}</a>
           </li>
         </ul>
       </div>
@@ -84,9 +98,9 @@ const columns = [
       <div class="section-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/45 sm:flex-row">
         <p>© {{ year }} Coreves Software Solutions. All rights reserved.</p>
         <div class="flex items-center gap-6">
-          <a href="#" class="transition-colors hover:text-white/80">Privacy</a>
-          <a href="#" class="transition-colors hover:text-white/80">Terms</a>
-          <a href="#" class="transition-colors hover:text-white/80">Security</a>
+          <NuxtLink to="/privacy" class="transition-colors hover:text-white/80">Privacy</NuxtLink>
+          <NuxtLink to="/terms" class="transition-colors hover:text-white/80">Terms</NuxtLink>
+          <NuxtLink to="/security" class="transition-colors hover:text-white/80">Security</NuxtLink>
         </div>
       </div>
     </div>

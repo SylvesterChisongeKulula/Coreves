@@ -1,0 +1,34 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#003c33" />
+      <stop offset="40%" stop-color="#071829" />
+      <stop offset="72%" stop-color="#17171c" />
+      <stop offset="100%" stop-color="#2b1a15" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7759" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#ff7759" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1080" cy="560" r="360" fill="url(#glow)" />
+
+  <!-- Orbit-ring motif, echoing the Coreves emblem -->
+  <circle cx="1010" cy="120" r="230" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="2" />
+  <circle cx="1010" cy="120" r="170" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="2" />
+
+  <!-- Wordmark -->
+  <text x="80" y="108" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" letter-spacing="4" fill="#ffffff">COREVES</text>
+
+  <!-- Headline -->
+  <text x="78" y="270" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="700" fill="#ffffff">Coreves Finance</text>
+
+  <!-- Subhead -->
+  <text x="80" y="330" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" fill="#ffffff" fill-opacity="0.88">Loan management software for microfinance</text>
+  <text x="80" y="374" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" fill="#ffffff" fill-opacity="0.88">and lending institutions</text>
+
+  <!-- Footer line -->
+  <text x="80" y="560" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#ffffff" fill-opacity="0.55">Custom Software &#183; Digital Operations &#183; Coreves Products &#8212; Lusaka, Zambia</text>
+</svg>

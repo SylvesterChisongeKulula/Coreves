@@ -2,11 +2,11 @@
 import logoUrl from '~/assets/images/logo.svg'
 
 const navLinks = [
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Coreves Finance', href: '#finance' },
-  { label: 'Company', href: '#company' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Solutions', href: '/#solutions' },
+  { label: 'Industries', href: '/#industries' },
+  { label: 'Coreves Finance', href: '/#finance' },
+  { label: 'Company', href: '/#company' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 const mobileOpen = ref(false)
@@ -42,7 +42,7 @@ function handleMobileDemoClick() {
         <!-- Right actions -->
         <div class="hidden items-center gap-5 md:flex">
           <a
-            href="#contact"
+            href="/#contact"
             class="pill-cta-dark"
             @click="trackEvent('demo_cta_click', { cta_location: 'header_desktop' })"
           >
@@ -90,7 +90,7 @@ function handleMobileDemoClick() {
         </a>
         <div class="mt-3 flex flex-col gap-3 border-t border-hairline/70 pt-4">
           <a
-            href="#contact"
+            href="/#contact"
             class="pill-cta-dark w-full"
             @click="handleMobileDemoClick"
           >
