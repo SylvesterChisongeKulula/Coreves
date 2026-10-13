@@ -1,4 +1,7 @@
-# Coreves console on Dokploy (billing.coreves.software). The image is built by CI
+# Coreves console on Dokploy (billing.coreves.software). Lives at the repo root on
+# purpose: Dokploy runs compose with --project-directory = repo root, so the .env it
+# writes is only picked up for a root-level compose file.
+# The image is built by CI
 # (.github/workflows/console.yml) and pulled from private GHCR — Dokploy needs the
 # ghcr.io registry configured. Secrets come from the Dokploy environment.
 

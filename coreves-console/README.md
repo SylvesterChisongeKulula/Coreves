@@ -64,7 +64,7 @@ The UI only hides buttons.
    `ghcr.io/sylvesterchisongekulula/coreves-console`. The package is private. Dokploy
    pulls it with the `ghcr.io` registry login it already has.
 3. **Create the app:** in Dokploy, create a **Compose** app from this repo with
-   compose path `coreves-console/docker-compose.yml`, set the environment above,
+   compose path `docker-compose.console.yml` (at the repo root, so Dokploy's `.env` is found), set the environment above,
    and deploy.
 4. **Auto-deploy (optional):** add repo secrets `DOKPLOY_URL`, `DOKPLOY_API_KEY`
    and `CONSOLE_COMPOSE_ID`, and every push to `main` redeploys.
