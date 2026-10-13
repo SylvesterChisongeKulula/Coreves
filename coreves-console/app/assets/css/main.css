@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Brand tokens — kept identical to coreves-frontend/app/assets/css/main.css */
+@theme {
+  --color-primary: #17171c;
+  --color-deep-green: #003c33;
+  --color-dark-navy: #071829;
+  --color-canvas: #ffffff;
+  --color-soft-stone: #eeece7;
+  --color-pale-green: #edfce9;
+  --color-pale-blue: #f1f5ff;
+  --color-ink: #212121;
+  --color-muted: #93939f;
+  --color-slate: #75758a;
+  --color-body-muted: #616161;
+  --color-coral: #ff7759;
+  --color-action-blue: #1863dc;
+  --color-hairline: #d9d9dd;
+  --color-border-light: #e5e7eb;
+  --color-on-dark: #ffffff;
+  --color-danger: #c2410c;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-pill: 32px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: #fafaf8;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background-color: var(--color-deep-green); color: #fff; }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--color-primary); }
+}
+
+/* Shared bases are utilities so other component classes can @apply them (Tailwind v4). */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-[32px] px-4 py-2 text-sm font-medium transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer;
+}
+@utility badge {
+  @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
+}
+
+@layer components {
+  .btn-dark { @apply btn bg-primary text-white hover:opacity-90; }
+  .btn-outline { @apply btn border border-primary text-primary hover:bg-primary hover:text-white; }
+  .btn-ghost { @apply btn text-ink hover:bg-soft-stone; }
+  .btn-danger { @apply btn border border-danger text-danger hover:bg-danger hover:text-white; }
+
+  .field { @apply block w-full border border-hairline rounded-[4px] px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-action-blue bg-white; }
+  .label { @apply block text-xs font-medium text-body-muted mb-1; }
+  .mono-label { @apply font-mono text-xs uppercase tracking-[0.12em] text-muted; }
+
+  .card { @apply bg-white border border-border-light rounded-[16px] p-5; }
+  .table { @apply w-full text-sm; }
+  .table th { @apply text-left font-mono text-[11px] uppercase tracking-[0.1em] text-muted font-normal px-3 py-2 border-b border-border-light; }
+  .table td { @apply px-3 py-2.5 border-b border-border-light align-top; }
+  .table tr:last-child td { @apply border-b-0; }
+  .table tbody tr.link:hover { @apply bg-soft-stone/50 cursor-pointer; }
+
+  .badge-green { @apply badge bg-pale-green text-deep-green; }
+  .badge-blue { @apply badge bg-pale-blue text-action-blue; }
+  .badge-amber { @apply badge bg-amber-50 text-amber-800; }
+  .badge-red { @apply badge bg-orange-50 text-danger; }
+  .badge-grey { @apply badge bg-soft-stone text-body-muted; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  html { background: #fff; }
+}

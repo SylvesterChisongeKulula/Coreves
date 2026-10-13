@@ -1,0 +1,56 @@
+# Coreves console on Dokploy (billing.coreves.software). The image is built by CI
+# (.github/workflows/console.yml) and pulled from private GHCR — Dokploy needs the
+# ghcr.io registry configured. Secrets come from the Dokploy environment.
+
+services:
+  console:
+    image: ghcr.io/sylvesterchisongekulula/coreves-console:${IMAGE_TAG:-latest}
+    pull_policy: ${IMAGE_PULL_POLICY:-always}
+    restart: unless-stopped
+    environment:
+      NUXT_DATABASE_URL: postgres://console:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/console
+      NUXT_SESSION_PASSWORD: ${SESSION_PASSWORD:?SESSION_PASSWORD (32+ chars) is required}
+      NUXT_LICENCE_PRIVATE_KEY: ${LICENCE_PRIVATE_KEY:?LICENCE_PRIVATE_KEY is required}
+      NUXT_LEADS_WEBHOOK_SECRET: ${LEADS_WEBHOOK_SECRET:-}
+      NUXT_RESEND_API_KEY: ${RESEND_API_KEY:?RESEND_API_KEY is required}
+      NUXT_MAIL_FROM: ${MAIL_FROM:-Coreves Billing <billing@mail.coreves.software>}
+      NUXT_OWNER_EMAIL: ${OWNER_EMAIL:-}
+      NUXT_OWNER_PASSWORD: ${OWNER_PASSWORD:-}
+      NUXT_PUBLIC_CONSOLE_URL: https://${CONSOLE_DOMAIN:-billing.coreves.software}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${DOKPLOY_NETWORK:-dokploy-network}"
+      - "traefik.http.routers.coreves-console.rule=Host(`${CONSOLE_DOMAIN:-billing.coreves.software}`)"
+      - "traefik.http.routers.coreves-console.entrypoints=websecure"
+      - "traefik.http.routers.coreves-console.tls=true"
+      - "traefik.http.routers.coreves-console.tls.certresolver=letsencrypt"
+      - "traefik.http.services.coreves-console.loadbalancer.server.port=3000"
+    networks:
+      - default
+      - dokploy-network
+
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: console
+      POSTGRES_USER: console
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - console_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U console -d console"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  console_postgres:
+
+networks:
+  dokploy-network:
+    external: true
+    name: ${DOKPLOY_NETWORK:-dokploy-network}
