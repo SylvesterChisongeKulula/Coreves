@@ -70,7 +70,8 @@ const updated = 'September 2026'
           <h2 class="text-xl text-ink">Reporting a concern</h2>
           <p class="mt-3">
             If you believe you've found a security issue affecting this website, please tell us
-            through the <NuxtLink to="/#contact" class="text-link">contact form</NuxtLink>,
+            through the <NuxtLink to="/#contact" class="text-link">contact form</NuxtLink> or by
+            emailing <a :href="`mailto:${CONTACT_EMAIL}`" class="text-link">{{ CONTACT_EMAIL }}</a>,
             describing the issue so we can look into it.
           </p>
         </section>

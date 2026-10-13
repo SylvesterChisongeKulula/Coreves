@@ -11,6 +11,9 @@ export default defineNuxtConfig({
     resendApiKey: process.env.RESEND_API_KEY ?? '',
     demoNotificationEmail: process.env.DEMO_NOTIFICATION_EMAIL ?? '',
     demoFromEmail: process.env.DEMO_FROM_EMAIL ?? '',
+    // Coreves console lead webhook — leave empty to only email demo requests.
+    consoleLeadsUrl: process.env.CONSOLE_LEADS_URL ?? '',
+    leadsWebhookSecret: process.env.LEADS_WEBHOOK_SECRET ?? '',
     public: {
       gaMeasurementId: process.env.NUXT_PUBLIC_GA_MEASUREMENT_ID ?? '',
       googleSiteVerification,

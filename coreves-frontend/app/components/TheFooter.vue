@@ -81,6 +81,24 @@ const columns = [
           around real business needs.
         </p>
         <p class="mt-6 text-sm text-white/55">Lusaka, Zambia</p>
+
+        <div class="mt-4 space-y-2 text-sm text-white/55">
+          <a :href="`mailto:${CONTACT_EMAIL}`" class="block transition-colors hover:text-white">{{
+            CONTACT_EMAIL
+          }}</a>
+          <div v-for="phone in CONTACT_PHONES" :key="phone.tel" class="flex items-center gap-3">
+            <a :href="`tel:${phone.tel}`" class="transition-colors hover:text-white">{{ phone.display }}</a>
+            <span class="text-white/25" aria-hidden="true">·</span>
+            <a
+              :href="whatsappLink(phone.whatsapp)"
+              target="_blank"
+              rel="noopener"
+              class="transition-colors hover:text-white"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
 
       <div v-for="col in columns" :key="col.title">

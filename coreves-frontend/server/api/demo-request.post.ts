@@ -33,6 +33,10 @@ export default defineEventHandler(async (event) => {
   const clientFailed = clientResult.status === 'rejected' || !!clientResult.value.error
   const adminFailed = adminResult.status === 'rejected' || !!adminResult.value.error
 
+  // Record the lead in the Coreves console. Runs after the response is sent, so a
+  // slow or unavailable console never delays or fails the visitor's request.
+  event.waitUntil(forwardLead(demoRequest, config.consoleLeadsUrl, config.leadsWebhookSecret))
+
   if (clientFailed && adminFailed) {
     throw createError({
       statusCode: 502,

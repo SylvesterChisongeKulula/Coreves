@@ -121,7 +121,10 @@ const updated = 'September 2026'
           <h2 class="text-xl text-ink">Contact</h2>
           <p class="mt-3">
             Questions about this policy or your information can be sent through the
-            <NuxtLink to="/#contact" class="text-link">contact form</NuxtLink>.
+            <NuxtLink to="/#contact" class="text-link">contact form</NuxtLink>, by emailing
+            <a :href="`mailto:${CONTACT_EMAIL}`" class="text-link">{{ CONTACT_EMAIL }}</a>, or by
+            calling or WhatsApping
+            <a :href="`tel:${CONTACT_PHONES[0].tel}`" class="text-link">{{ CONTACT_PHONES[0].display }}</a>.
           </p>
         </section>
       </div>

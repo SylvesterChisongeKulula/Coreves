@@ -47,6 +47,15 @@ useHead({
               addressLocality: 'Lusaka',
               addressCountry: 'ZM',
             },
+            email: CONTACT_EMAIL,
+            telephone: CONTACT_PHONES[0].tel,
+            contactPoint: CONTACT_PHONES.map((phone) => ({
+              '@type': 'ContactPoint',
+              contactType: 'customer service',
+              telephone: phone.tel,
+              email: CONTACT_EMAIL,
+              areaServed: 'ZM',
+            })),
             sameAs: [],
           },
           {

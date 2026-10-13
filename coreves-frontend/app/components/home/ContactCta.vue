@@ -80,6 +80,19 @@ async function handleSubmit() {
             <li>· Business process digitalisation</li>
             <li>· Coreves Finance enquiries</li>
           </ul>
+
+          <div class="mt-10 rounded-[16px] border border-hairline/70 bg-canvas/70 p-6">
+            <p class="text-sm font-medium text-ink">Prefer to talk directly?</p>
+            <div class="mt-3 space-y-2.5">
+              <a :href="`mailto:${CONTACT_EMAIL}`" class="text-link">{{ CONTACT_EMAIL }}</a>
+              <div v-for="phone in CONTACT_PHONES" :key="phone.tel" class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                <a :href="`tel:${phone.tel}`" class="text-link">{{ phone.display }}</a>
+                <a :href="whatsappLink(phone.whatsapp)" target="_blank" rel="noopener" class="text-link">
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="rounded-[22px] bg-canvas p-7 sm:p-9">
